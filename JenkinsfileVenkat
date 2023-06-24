@@ -1,6 +1,10 @@
 node {
    
    def maveenHome = tool name: "Maveen3.8.5"
+
+	 echo "job name is :  ${env.JOB_NAME}"
+	 echo "Node anme is : ${enc.NODE_NAME}"
+	 echo "Node anme is : ${enc.BUILD_NUMBER}"
    
    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])]) 
    // this prioeprtey is to discard past buillds and poll scm.
