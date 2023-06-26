@@ -7,7 +7,7 @@ node {
   properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])]) // this prioeprtey is to discard past buillds and poll scm.
    
    stage ('checkoutCode') { // This stage is for to checkout the code.
-      git branch: 'Development', url: 'https://github.com/VenkateshTondapu/maven-web-application.git'
+      git branch: ${BranchName}, url: 'https://github.com/VenkateshTondapu/maven-web-application.git'
    } 
    
    stage ('Build') { // this stage is for maveen build
